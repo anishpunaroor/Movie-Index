@@ -52,3 +52,16 @@ function getColor(vote) {
         return 'red'
     }
 }
+
+// Search function
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); 
+
+    const searchTerm = search.value; 
+
+    if(searchTerm) {
+        getMovies(SEARCH_URL + '&query=' + searchTerm)
+    } else {
+        getMovies(API_URL); 
+    }
+})
