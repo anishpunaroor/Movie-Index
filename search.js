@@ -20,15 +20,24 @@ var totalPages = 100;
 
 getMovies(API_URL);
 
-// Use API_URL to send request for data 
+// Use TMDB API to send request for movie data. 
 function getMovies(url) {
-
+    lastUrl = url;
     fetch(url).then(res => res.json()).then(data => {
-        showMovies(data.results); 
+        console.log(data.results); 
+        if (data.results.length !== 0) {
+            showMovies(data.results);
+            currPage = data.page; 
+            nextPage = currPage + 1; 
+            prevPage = currPage - 1;
+            totalPages = data.total_pages; 
+        } else {
+            main.innerHTML = `<h1 class="no-results"> No Results Found </h1>`
+        }
     })
 }
 
-// Display movie information as an HTML element for website
+// Display movie information as an HTML element for the website. 
 function showMovies(data) {
     main.innerHTML = ''; 
     
@@ -53,7 +62,7 @@ function showMovies(data) {
     })
 }
 
-// Determine the color that the vote average should be displayed in
+// Determine the color that the vote average should be displayed in. 
 function getColor(vote) {
     if (vote >= 8.0) {
         return 'green'
@@ -64,7 +73,7 @@ function getColor(vote) {
     }
 }
 
-// Search function
+// Link search form to movie API.
 form.addEventListener('submit', (e) => {
     e.preventDefault(); 
 
@@ -74,5 +83,12 @@ form.addEventListener('submit', (e) => {
         getMovies(SEARCH_URL + '&query=' + searchTerm)
     } else {
         getMovies(API_URL); 
+    }
+})
+
+// Go to next page when clicked
+next.addEventListener('click', () => {
+    if (nextPage <= totalPages) {
+        pageCall(nextPage);
     }
 })
