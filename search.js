@@ -8,6 +8,16 @@ const SEARCH_URL = BASE_URL + '/search/movie?' + API_KEY;
 
 const main = document.getElementById('main'); 
 
+const prev = document.getElementById('prev'); 
+const next = document.getElementById('next');
+const curr = document.getElementById('curr'); 
+
+var currPage = 1; 
+var nextPage = 2; 
+var prevPage = 3; 
+var lastUrl = ''; 
+var totalPages = 100; 
+
 getMovies(API_URL);
 
 // Use API_URL to send request for data 
