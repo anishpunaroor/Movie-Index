@@ -7,16 +7,49 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const SEARCH_URL = BASE_URL + '/search/movie?' + API_KEY; 
 
 const main = document.getElementById('main'); 
+const form = document.getElementById('form'); 
+const tags = document.getElementById('tags');
 
 const prev = document.getElementById('prev'); 
 const next = document.getElementById('next');
 const curr = document.getElementById('current'); 
+
+var selectedGenre = []
 
 var currPage = 1; 
 var nextPage = 2; 
 var prevPage = 3; 
 var lastUrl = ''; 
 var totalPages = 100; 
+
+setGenre(); 
+
+// Dynamically initialize each genre tag and choose genre(s). 
+function setGenre() {
+    tags.innerHTML='';
+    genres.forEach(genre => {
+        const t = document.createElement('div'); 
+        t.classList.add('tag'); 
+        t.id = genre.id; 
+        t.innerText = genre.name; 
+        t.addEventListener('click', () => {
+            if (selectedGenre.length == 0) {
+                selectedGenre.push(genre.id); 
+            } else {
+                if (selectedGenre.includes(genre.id)) {
+                    selectedGenre.forEach((id, index) => {
+                        if (id == genre.id) {
+                            selectedGenre.splice(index, 1); 
+                        }
+                    })
+                } else {
+                    selectedGenre.push(genre.id); 
+                }
+            }
+        })
+        tags.append(t); 
+    })
+}
 
 getMovies(API_URL);
 
@@ -32,10 +65,9 @@ function getMovies(url) {
             prevPage = currPage - 1;
             totalPages = data.total_pages; 
             
-            // Toggle page navigation options
-            
+                      
             current.innerText = currPage; 
-
+            // Toggle page navigation options. 
             if (currPage <= 1) {
                 prev.classList.add('disabled');
                 next.classList.remove('disabled')
@@ -103,21 +135,21 @@ form.addEventListener('submit', (e) => {
     }
 })
 
-// Go to previous page when clicked
+// Go to previous page when clicked.
 prev.addEventListener('click', () => {
     if (prevPage > 0) {
         pageCall(prevPage);
     }
 })
 
-// Go to next page when clicked
+// Go to next page when clicked.
 next.addEventListener('click', () => {
     if (nextPage <= totalPages) {
         pageCall(nextPage);
     }
 })
 
-// Go to specified page by querying and modifying url
+// Go to specified page by querying and modifying url. 
 function pageCall(page) {
     let urlSplit = lastUrl.split('?'); 
     let queryParams = urlSplit[1].split('&');
