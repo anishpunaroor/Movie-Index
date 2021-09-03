@@ -10,7 +10,7 @@ const main = document.getElementById('main');
 
 const prev = document.getElementById('prev'); 
 const next = document.getElementById('next');
-const curr = document.getElementById('curr'); 
+const curr = document.getElementById('current'); 
 
 var currPage = 1; 
 var nextPage = 2; 
@@ -46,6 +46,7 @@ function getMovies(url) {
                 prev.classList.remove('disabled');
                 next.classList.remove('disabled') 
             }
+            search.scrollIntoView({behavior : 'smooth'})
             
         } else {
             main.innerHTML = `<h1 class="no-results"> No Results Found </h1>`
