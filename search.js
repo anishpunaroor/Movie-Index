@@ -31,6 +31,19 @@ function getMovies(url) {
             nextPage = currPage + 1; 
             prevPage = currPage - 1;
             totalPages = data.total_pages; 
+            
+            // Toggle page navigation options
+            if (currentPage <= 1) {
+                prev.classList.add('disabled');
+                next.classList.remove('disabled'); 
+            } else if (currentPage >= lastPage) {
+                prev.classList.remove('disabled'); 
+                next.classList.add('disabled'); 
+            } else {
+                prev.classList.remove('disabled');
+                next.classList.remove('disabled');  
+            }
+            
         } else {
             main.innerHTML = `<h1 class="no-results"> No Results Found </h1>`
         }
@@ -83,6 +96,13 @@ form.addEventListener('submit', (e) => {
         getMovies(SEARCH_URL + '&query=' + searchTerm)
     } else {
         getMovies(API_URL); 
+    }
+})
+
+// Go to previous page when clicked
+prev.addEventListener('click', () => {
+    if (prevPage > 0) {
+        pageCall(prevPage);
     }
 })
 
