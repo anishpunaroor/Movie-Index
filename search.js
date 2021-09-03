@@ -92,3 +92,14 @@ next.addEventListener('click', () => {
         pageCall(nextPage);
     }
 })
+
+// Go to specified page by querying and modifying url
+function pageCall(page) {
+    let urlSplit = lastUrl.split('?'); 
+    let queryParams = urlSplit[1].split('&');
+    let key = queryParams[queryParams.length-1].split('='); 
+    if (key[0] != 'page') {
+        let url = lastUrl + "&page=" + page
+        getMovies(url); 
+    }
+}
