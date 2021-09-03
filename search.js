@@ -33,15 +33,18 @@ function getMovies(url) {
             totalPages = data.total_pages; 
             
             // Toggle page navigation options
-            if (currentPage <= 1) {
+            
+            current.innerText = currPage; 
+
+            if (currPage <= 1) {
                 prev.classList.add('disabled');
-                next.classList.remove('disabled'); 
-            } else if (currentPage >= lastPage) {
+                next.classList.remove('disabled')
+            } else if (currPage >= totalPages) {
                 prev.classList.remove('disabled'); 
-                next.classList.add('disabled'); 
+                next.classList.add('disabled')
             } else {
                 prev.classList.remove('disabled');
-                next.classList.remove('disabled');  
+                next.classList.remove('disabled') 
             }
             
         } else {
