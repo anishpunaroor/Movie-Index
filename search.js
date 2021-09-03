@@ -101,5 +101,12 @@ function pageCall(page) {
     if (key[0] != 'page') {
         let url = lastUrl + "&page=" + page
         getMovies(url); 
+    } else {
+        key[1] = page.toString(); 
+        let a = key.join('='); 
+        queryParams[queryParams.length-1] = a; 
+        let b = queryParams.join('&'); 
+        let url = urlSplit[0] + '?' + b
+        getMovies(url); 
     }
 }
