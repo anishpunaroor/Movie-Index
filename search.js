@@ -125,9 +125,25 @@ function setGenre() {
                     selectedGenre.push(genre.id); 
                 }
             }
+            getMovies(API_URL + '&with_genres=' + encodeURI(selectedGenre.join(',')))
+            highlightTag()
         })
         tags.append(t); 
     })
+}
+
+// Highlight the selected tag. 
+function highlightTag() {
+    const tags = document.querySelectorAll('.tag'); 
+    tags.forEach(tag => {
+        tag.classList.remove('highlight')
+    })
+    if (selectedGenre.length != 0) {
+        selectedGenre.forEach(id => {
+            const highlightedTag = document.getElementById(id); 
+            highlightedTag.classList.add('highlight'); 
+        })
+    }
 }
 
 getMovies(API_URL);
