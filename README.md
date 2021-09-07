@@ -1,3 +1,3 @@
-# DCEU-Actors
+# The Movie Index
 
 A simple React project. 
