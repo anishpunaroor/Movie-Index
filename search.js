@@ -146,6 +146,25 @@ function highlightTag() {
     }
 }
 
+// Clear any previosuly selected genre tags. 
+function clear() {
+    let clearBtn = document.getElementById('clear'); 
+    if (clearBtn) {
+        clearBtn.classList.add('clear')
+    } else {
+        let clear = document.createElement('div'); 
+        clear.classList.add('tag', 'clear'); 
+        clear.id = 'clear'; 
+        clear.innerText = 'Clear All'; 
+        clear.addEventListener('click', () => {
+            selectedGenre = [];
+            setGenre();
+            getMovies(API_URL);
+        })
+        tags.append(clear); 
+    }
+}
+
 getMovies(API_URL);
 
 // Use TMDB API to send request for movie data. 
@@ -190,7 +209,7 @@ function showMovies(data) {
         const movieObj = document.createElement('div'); 
         movieObj.classList.add('movie'); 
         movieObj.innerHTML = `
-            <img src="${IMG_URL+poster_path}" alt="${title}">
+            <img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
 
             <div class="movie-info">
                 <h3> ${title} </h3>
@@ -222,7 +241,8 @@ form.addEventListener('submit', (e) => {
     e.preventDefault(); 
 
     const searchTerm = search.value; 
-
+    selectedGenre=[]; 
+    highlightTag();
     if(searchTerm) {
         getMovies(SEARCH_URL + '&query=' + searchTerm)
     } else {
