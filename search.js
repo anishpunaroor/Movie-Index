@@ -2,9 +2,14 @@
 
 const API_KEY = 'api_key=a262fb1998a2c64c05a5d5e7a7635772'; 
 const BASE_URL = 'https://api.themoviedb.org/3';
-const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
+const DISCOVER = '/discover/movie?sort_by=';
+const DEFAULT_SORT = 'popularity.desc&'; 
+const NEW_RELEASE = 'release_date.desc&';
+const HIGH_SCORE = 'vote_average.desc&';
+const LOW_SCORE = 'vote_average.asc&';
+const API_URL = BASE_URL + DISCOVER + DEFAULT_SORT + API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const SEARCH_URL = BASE_URL + '/search/movie?' + API_KEY; 
+const SEARCH_URL = BASE_URL + '/search/movie?' + API_KEY;
 
 const genres = [
     {
@@ -88,6 +93,11 @@ const genres = [
 const main = document.getElementById('main'); 
 const form = document.getElementById('form'); 
 const tags = document.getElementById('tags');
+
+const pop = document.getElementById("pop");
+const new_release = document.getElementById('new'); 
+const high_score = document.getElementById('highscore');
+const low_score = document.getElementById('lowscore');
 
 const prev = document.getElementById('prev'); 
 const next = document.getElementById('next');
@@ -235,6 +245,29 @@ function getColor(vote) {
         return 'red'
     }
 }
+
+// Sort by popularity descending (default)
+pop.addEventListener('click', () => {
+    getMovies(API_URL); 
+})
+
+// Sort by upcoming releases
+new_release.addEventListener('click', () => {
+    const NEW_URL = BASE_URL + DISCOVER + NEW_RELEASE + API_KEY; 
+    getMovies(NEW_URL); 
+})
+
+// Sort by vote average descending
+high_score.addEventListener('click', () => {
+    const HS_URL = BASE_URL + DISCOVER + HIGH_SCORE + API_KEY; 
+    getMovies(HS_URL); 
+})
+
+// Sort by vote average ascending
+low_score.addEventListener('click', () => {
+    const LS_URL = BASE_URL + DISCOVER + LOW_SCORE + API_KEY; 
+    getMovies(LS_URL); 
+})
 
 // Link search form to movie API.
 form.addEventListener('submit', (e) => {
