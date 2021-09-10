@@ -5,8 +5,8 @@
 }
 
 :root{
-    --primary-color:#22254b;
-    --secondary-color: #373b69;
+    --primary-color:#146780;
+    --secondary-color: #5bc0de;
 }
 
 body{
@@ -140,4 +140,8 @@ main{
 
 .tag.clear {
     background-color: red;
+}
+
+.dropdown-toggle{
+    background-color: var(--primary-color);   
 }
