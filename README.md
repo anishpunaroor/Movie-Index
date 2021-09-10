@@ -16,4 +16,6 @@ The website was deployed using AWS Amplify.
 
 ## Todo 
 
-
+- [ ] Add user authentication/ allow users to sign in
+- [ ] Allow users to click on movie to get information about trailers and reviews
+- [ ] Users can search for actors 
