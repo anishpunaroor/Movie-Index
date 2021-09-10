@@ -202,7 +202,7 @@ function getMovies(url) {
                 prev.classList.remove('disabled');
                 next.classList.remove('disabled') 
             }
-            search.scrollIntoView({behavior : 'smooth'})
+            nav.scrollIntoView({behavior : 'smooth'})
             
         } else {
             main.innerHTML = `<h1 class="no-results"> No Results Found </h1>`
