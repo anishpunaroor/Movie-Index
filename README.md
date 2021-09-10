@@ -1,6 +1,6 @@
 # The Movie Index
 
-The Movie Index is a static website that I designed to become familiar with Javascript as well as front-end development in general. This allows users to search for any movie, filter by genre, and sort by popularity. I have also incorporated pagination into the website so users can browse multiple pages of the provided results. 
+The Movie Index is a static website that I designed in order to learn Javascript and front-end development in general. This allows users to search for any movie, filter by genre, and sort by popularity. I have also incorporated pagination into the website so users can browse multiple pages of the provided results. 
 
 ### **[Visit The Movie Index](https://main.d1gg1ja2f25ag4.amplifyapp.com/)**
 
