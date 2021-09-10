@@ -12,6 +12,8 @@ This website is powered by [The Movie Database](https://www.themoviedb.org)'s fr
 
 For an added challenge and simplicity, I did not use any other UI layout frameworks in The Movie Index.
 
+The website was deployed using AWS Amplify. 
+
 ## Todo 
 
 
