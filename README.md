@@ -19,3 +19,7 @@ The website was deployed using AWS Amplify.
 - [ ] Add user authentication/ allow users to sign in
 - [ ] Allow users to click on movie to get information about trailers and reviews
 - [ ] Users can search for actors 
+
+## Credit
+
+I based this project upon FlorinApp's movie app tutorial ([Video Link](https://www.youtube.com/watch?v=sZ0bZGfg_m4&t=1951s), to which I added additional features like sorting and genre filters. 
