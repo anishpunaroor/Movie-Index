@@ -22,4 +22,4 @@ The website was deployed using AWS Amplify.
 
 ## Credit
 
-I based this project upon FlorinApp's movie app tutorial ([Video Link](https://www.youtube.com/watch?v=sZ0bZGfg_m4&t=1951s), to which I added additional features like sorting and genre filters. 
+I based this project upon FlorinApp's movie app tutorial ([Video Link](https://www.youtube.com/watch?v=sZ0bZGfg_m4&t=1951s)), to which I added additional features like sorting and genre filters. 
